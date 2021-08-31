@@ -21,7 +21,7 @@
   "volumes": [],
   "networkMode": null,
   "memory": "128",
-  "cpu": "0",
+  "cpu": "1",
   "executionRoleArn": "arn:aws:iam::072075398333:role/ecs-ktor-sample-app",
   "family": "ecs-ktor-sample-app-task-definition",
   "taskRoleArn": "",
