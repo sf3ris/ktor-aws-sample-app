@@ -29,7 +29,7 @@ jobs:
         id: build-image
         env:
           ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-          ECR_REPOSITORY: ktor-sample
+          ECR_REPOSITORY: ktor-bff-repository
           IMAGE_TAG: ${{ github.sha }}
         run: |
           # Build a docker container and
@@ -43,14 +43,14 @@ jobs:
         id: task-def
         uses: aws-actions/amazon-ecs-render-task-definition@v1
         with:
-          task-definition: ./iac/aws/task-definition.json
-          container-name: ECSKtorSampleTask
+          task-definition: fargate-task-definition.json
+          container-name: ktor-bff
           image: ${{ steps.build-image.outputs.image }}
 
       - name: Deploy Amazon ECS task definition
         uses: aws-actions/amazon-ecs-deploy-task-definition@v1
         with:
           task-definition: ${{ steps.task-def.outputs.task-definition }}
-          service: KtorSampleAppServiice
-          cluster: KtorSampleApp
+          service: ktor-bff-service
+          cluster: ktor-bff-cluster
           wait-for-service-stability: true

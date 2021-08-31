@@ -1,0 +1,29 @@
+{
+  "requiresCompatibilities": [
+    "EC2"
+  ],
+  "inferenceAccelerators": [],
+  "containerDefinitions": [
+    {
+      "name": "ktor-bff",
+      "image": "ktor-sample:00000",
+      "resourceRequirements": null,
+      "essential": true,
+      "portMappings": [
+        {
+          "containerPort": "8080",
+          "hostPort": "8080",
+          "protocol": "tcp"
+        }
+      ]
+    }
+  ],
+  "volumes": [],
+  "networkMode": null,
+  "memory": "128",
+  "cpu": "256",
+  "executionRoleArn": null,
+  "family": "ecs-ktor-sample-app-task-definition",
+  "taskRoleArn": "",
+  "placementConstraints": []
+}
