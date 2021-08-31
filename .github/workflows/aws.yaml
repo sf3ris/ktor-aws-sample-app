@@ -43,7 +43,7 @@ jobs:
         id: task-def
         uses: aws-actions/amazon-ecs-render-task-definition@v1
         with:
-          task-definition: fargate-task-definition.json
+          task-definition: ./iac/aws/fargate-task-definition.json
           container-name: ktor-bff
           image: ${{ steps.build-image.outputs.image }}
 
