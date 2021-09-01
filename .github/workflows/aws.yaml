@@ -43,14 +43,14 @@ jobs:
         id: task-def
         uses: aws-actions/amazon-ecs-render-task-definition@v1
         with:
-          task-definition: ./iac/aws/fargate-task-definition.json
-          container-name: ktor-bff
+          task-definition: ./iac/aws/ec2-task-definition.json
+          container-name: ktor-bff-1
           image: ${{ steps.build-image.outputs.image }}
 
       - name: Deploy Amazon ECS task definition
         uses: aws-actions/amazon-ecs-deploy-task-definition@v1
         with:
           task-definition: ${{ steps.task-def.outputs.task-definition }}
-          service: ktor-bff-service
-          cluster: ktor-bff-cluster
+          service: ktor-bff-service-1
+          cluster: ktor-bff-cluster-1
           wait-for-service-stability: true
