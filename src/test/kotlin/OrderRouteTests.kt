@@ -13,7 +13,7 @@ class OrderRouteTests {
         withTestApplication({ module(testing = true) }) {
             handleRequest(HttpMethod.Get, "/order/2020-04-06-01").apply {
                 assertEquals(
-                    """{"number":"2020-04-06-01","contents":[{"item":"Double Ham Sandwich","amount":4,"price":8.5},{"item":"Water","amount":1,"price":1.5},{"item":"Beer","amount":3,"price":2.3},{"item":"Cheesecake","amount":1,"price":3.75}]}""",
+                    """{"number":"2020-04-06-01","contents":[{"item":"Triple Ham Sandwich","amount":4,"price":12.5},{"item":"Water","amount":1,"price":1.5},{"item":"Beer","amount":3,"price":2.3},{"item":"Cheesecake","amount":1,"price":3.75}]}""",
                     response.content
                 )
                 assertEquals(HttpStatusCode.OK, response.status())
